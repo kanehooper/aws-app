@@ -65,7 +65,7 @@ app.get('/getposts', (req, res) => {
 })
 
 // Create Redis Client
-let client = redis.createClient(6379, 'kanehooper-001.drqkcg.0001.apse2.cache.amazonaws.com')
+let client = redis.createClient(6379, 'mywebcache.drqkcg.0001.apse2.cache.amazonaws.com')
 client.on_connect('connect', () => {
     console.log('Connected to Redis..')
 })
