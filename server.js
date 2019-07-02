@@ -3,6 +3,8 @@ const helmet = require('helmet')
 const path = require('path')
 const ejs = require('ejs')
 const mysql = require('mysql')
+const methodOverride = require('method-override')
+const redis = require('redis')
 
 const app = express()
 
@@ -10,6 +12,7 @@ const app = express()
 app.use(helmet())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+app.use(methodOverride('_method'))
 
 // View Engine
 app.set('view engine', 'ejs')
@@ -17,7 +20,7 @@ app.set('views', path.join(__dirname, '/views'))
 
 // Database
 const db = mysql.createConnection({
-    host: 'kanehooper.cikdop85qalb.ap-southeast-2.rds.amazonaws.com',
+    host: 'kanehooper.ccavulbhh6hk.ap-southeast-2.rds.amazonaws.com',
     user: 'kanehooper',
     password: 'kanehooper',
     database: 'kanehooper'
@@ -64,7 +67,7 @@ app.get('/getposts', (req, res) => {
 // Routes
 
 app.get('/', (req, res) => {
-    res.render('index.ejs')
+    res.render('index')
 }) 
 
 
